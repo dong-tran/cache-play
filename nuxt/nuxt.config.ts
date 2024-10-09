@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     // The private keys which are only available within server-side
     redisHost: 'localhost',
     redisPort: '56379',
+    apiBase: 'http://localhost:58080',
     public:{
       apiBase: 'http://localhost:58080'
     }
