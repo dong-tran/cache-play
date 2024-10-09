@@ -1,0 +1,46 @@
+services:
+  nginx:
+    build:
+      context: ./nginx
+    container_name: nginx
+    ports:
+      - "58585:80"
+  nuxt:
+    build:
+      context: ./nuxt
+    container_name: nuxt
+    ports:
+      - "53000:3000"
+    environment:
+      - NUXT_REDIS_HOST=redis
+      - NUXT_REDIS_PORT=6379
+      - NUXT_PUBLIC_API_BASE=http://api:8080
+  api:
+    build:
+      context: ./go
+    container_name: api
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    ports:
+      - "58080:8080"
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    ports:
+      - "56379:6379"
+  db:
+    build:
+      context: ./db
+    container_name: db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - "./db/init:/docker-entrypoint-initdb.d"
+      - "./db/postgresql.conf:/var/lib/postgresql/data/postgresql.conf"
+    ports:
+      - "55432:5432"
+  
