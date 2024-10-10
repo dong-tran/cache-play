@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"time"
 
 	"github.com/dong-tran/cache-play/model"
 	"github.com/redis/go-redis/v9"
@@ -48,7 +49,7 @@ func (s *userService) GetUsers(partition int64) ([]model.Users, error) {
 		to := (partition * 100)
 		s.db.Where("id BETWEEN ? AND ?", from, to).Find(&result)
 		str, _ := json.Marshal(result)
-		s.redis.Set(ctx, key, string(str), 0)
+		s.redis.Set(ctx, key, string(str), 60*time.Second)
 		return result, nil
 	}
 }

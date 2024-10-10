@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     redisHost: 'localhost',
     redisPort: '56379',
     apiBase: 'http://localhost:58080',
-    public:{
+    public: {
       apiBase: 'http://localhost:58080'
     }
   },
@@ -19,18 +19,20 @@ export default defineNuxtConfig({
 
   routeRules: {
     "/cached": {
+      swr: false,
       cache: {
-        maxAge: 30,
+        maxAge: 60,
         base: "redis"
       }
     },
-    "/api/nitro":{
-      cache:{
-        maxAge: 30,
-        base: "redis"
+    "/api/nitro": {
+      cache: {
+        maxAge: 60,
+        base: "redis",
+        swr: false
       }
     },
   },
 
-  modules: ["@nuxt/ui"],
+  modules: ["@nuxt/ui", '@pinia/nuxt'],
 })
