@@ -20,8 +20,8 @@ const counter = useCounter()
 
 const reset = () => {
   const t = useCookie('init', { maxAge: 60 })
-  t.value = undefine2d
-  counter.set(60)
+  t.value = undefined
+  counter.set(0)
 }
 onMounted(() => {
   const t = useCookie('init', { maxAge: 60 })
