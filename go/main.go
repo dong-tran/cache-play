@@ -45,15 +45,15 @@ func main() {
 		panic(err)
 	}
 
+	dbDateService := services.NewDbDateService(db)
 	userService := services.NewUserService(redisClient, db)
 
 	e.GET("/", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Healthy!")
 	})
 	e.GET("/time", func(c echo.Context) error {
-		return c.JSON(http.StatusOK, Response{
-			CurrentTime: time.Now().Format("2006/01/02 15:04:05"),
-		})
+		dbDate := dbDateService.GetCurrent()
+		return c.String(http.StatusOK, dbDate.CurrentTimestamp.Format("15:04:05"))
 	})
 	e.GET("/random", func(c echo.Context) error {
 		return c.String(200, randomString(6))

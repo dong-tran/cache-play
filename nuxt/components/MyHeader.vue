@@ -5,11 +5,11 @@
       <UIcon name="subway:alam" class="text-blue-200 w-8 h-8 mx-3" @click="reset" />
     </UChip>
     <div class="h-full flex flex-row grow items-center justify-center space-x-3 mx-5">
-      <a href="/" class="hover:animate-bounce shadow-md rounded-md bg-gray-50 hover:bg-emerald-200 px-3">Index (No Cache)</a>
+      <a href="/" class="hover:animate-bounce shadow-md rounded-md bg-gray-50 hover:bg-emerald-200 px-3">No Cache</a>
       <a href="/proxied" class="hover:animate-bounce shadow-md rounded-md bg-gray-50 hover:bg-emerald-200 px-3">Proxy Cache</a>
-      <a href="/cached" class="hover:animate-bounce shadow-md rounded-md bg-gray-50 hover:bg-emerald-200 px-3">Page Cache</a>
-      <a href="/nitro" class="hover:animate-bounce shadow-md rounded-md bg-gray-50 hover:bg-emerald-200 px-3">Nitro(Node Server) Cache</a>
-      <a href="/api-cached" class="hover:animate-bounce shadow-md rounded-md bg-gray-50 hover:bg-emerald-200 px-3">API Response Cache</a>
+      <a href="/cached" class="hover:animate-bounce shadow-md rounded-md bg-gray-50 hover:bg-emerald-200 px-3">Nitro (Page) Cache</a>
+      <a href="/nitro" class="hover:animate-bounce shadow-md rounded-md bg-gray-50 hover:bg-emerald-200 px-3">Nitro (API) Cache</a>
+      <a href="/api-cached" class="hover:animate-bounce shadow-md rounded-md bg-gray-50 hover:bg-emerald-200 px-3">Nitro (API Response) Cache</a>
       <a href="/redis-cached" class="hover:animate-bounce shadow-md rounded-md bg-gray-50 hover:bg-emerald-200 px-3">Go API(Redis) Cache</a>
     </div>
   </div>
